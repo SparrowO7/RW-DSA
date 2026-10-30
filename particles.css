@@ -1,0 +1,24 @@
+/* Atmosphere stays below the app, with no canvas pointer interception. */
+body{background:#06151d;background-image:radial-gradient(ellipse at 12% 15%,#b36b2424,transparent 42%),radial-gradient(ellipse at 85% 60%,#1d79482b,transparent 45%);background-attachment:fixed}
+#particle-world{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;contain:strict}
+#particle-world canvas{display:block;width:100%;height:100%;pointer-events:none}
+#app{position:relative;z-index:1}
+.library{background:linear-gradient(180deg,#07182008,#07182044)}
+.world-hero{isolation:isolate;background:none;background-color:transparent}
+.world-hero:before{content:'';position:absolute;inset:0;z-index:-1;background:url('assets/hero.png') center/cover no-repeat;mask-image:linear-gradient(90deg,transparent 0%,#0003 25%,#000 47%);pointer-events:none}
+.hero-copy{max-width:710px}.hero-copy h1{text-shadow:0 2px 28px #04101855}
+#ambience-toggle{position:fixed;bottom:12px;right:14px;z-index:4;padding:8px 12px;border:1px solid #a6b9b52e;border-radius:30px;background:#0b222bd9;backdrop-filter:blur(10px);color:#b6c7cb;font-size:10px;font-weight:500;cursor:pointer;box-shadow:0 3px 15px #0003}
+#ambience-toggle:hover{color:#fff;border-color:#eea15e66}
+body:has(dialog[open]) #ambience-toggle{visibility:hidden}
+.site-nav{background:#06151edb;backdrop-filter:blur(12px)}
+.light-mode{background:#f2f5ed;background-image:radial-gradient(ellipse at 12% 15%,#f6ac5624,transparent 42%),radial-gradient(ellipse at 85% 60%,#6dba7826,transparent 45%)}
+.light-mode .library{background:transparent}.light-mode #ambience-toggle{background:#fffdf3df;color:#305143}.light-mode .world-hero{background-color:#071820}.light-mode .world-hero:before{mask-image:none}
+@media(max-width:620px){.world-hero{background:none;background-color:transparent}.world-hero:before{background-image:linear-gradient(180deg,#07182000 0%,#07182000 68%),url('assets/hero.png');background-size:100% 100%,auto 70%;background-position:center,bottom right 28%;background-repeat:no-repeat;mask-image:linear-gradient(180deg,transparent 0%,transparent 26%,#000 57%)}.light-mode .world-hero:before{background-image:linear-gradient(180deg,#071820 0%,#071820e8 28%,#07182000 68%),url('assets/hero.png')}.hero-copy{max-width:100%}#ambience-toggle{font-size:9px;right:10px;bottom:10px;padding:7px 10px}}
+@media(prefers-reduced-motion:reduce){#particle-world{opacity:.7}}
+/* Scroll transitions are short; reading position and controls never move on hover. */
+.scroll-progress{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#ff9933,#e6e8dc,#338c4d);z-index:8;pointer-events:none}
+.scroll-reveal{opacity:0;translate:0 24px;transition:opacity .65s ease,translate .65s cubic-bezier(.2,.65,.3,1)}
+.scroll-reveal.in-view{opacity:1;translate:0 0}
+.mission-card.scroll-reveal{transition:opacity .65s ease,translate .65s cubic-bezier(.2,.65,.3,1),transform .28s,border-color .28s}
+.mission-card.scroll-reveal:nth-child(3n+2){transition-delay:50ms}.mission-card.scroll-reveal:nth-child(3n+3){transition-delay:100ms}
+@media(prefers-reduced-motion:reduce){.scroll-reveal{opacity:1;translate:none;transition:none}.scroll-progress{display:none}}
